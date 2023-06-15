@@ -17,11 +17,19 @@ export default function Page() {
             </Link>
             <View>
                 <Text style={underbar.bar}>
-                    <Text style={underbar.round}>시세</Text>
-                    <Text style={underbar.round}>지도</Text>
+                    <Link href="price">
+                        <Text style={underbar.round}>시세</Text>
+                    </Link>
+                    <Link href="/map">
+                        <Text style={underbar.round}>지도</Text>
+                    </Link>
                     <Text style={underbar.main}>홈</Text>
-                    <Text style={underbar.round}>검색</Text>
-                    <Text style={underbar.round}>설정</Text>
+                    <Link href="/search">
+                        <Text style={underbar.round}>검색</Text>
+                    </Link>
+                    <Link href="/option">
+                        <Text style={underbar.round}>설정</Text>
+                    </Link>
                 </Text>
             </View>
         </View>
@@ -34,7 +42,7 @@ const home = StyleSheet.create({
         textAlign: "center",
     },
     map: {
-        width:"100vw",
+        width: "100vw",
         height: "60vh",
         backgroundColor: "lightblue"
     },
@@ -52,26 +60,23 @@ const home = StyleSheet.create({
 const underbar = StyleSheet.create({
     bar: {
         backgroundColor: "rgba(50, 50, 50, 0.1)",
-        height: 80,
+        height: "10vh",
         bottom: 0,
         position: "fixed",
         width: "100vw"
     },
     round: {
         backgroundColor: "lightblue",
-        width: 40,
-        height: 40,
         padding: 20,
         borderRadius: 100,
-        margin:5
+        margin: "1%",
     },
     main: {
         backgroundColor: "blue",
-        color:"white",
-        fontSize:20,
-        width: 50,
-        height: 50,
+        color: "white",
+        fontSize: 20,
         padding: 30,
         borderRadius: 100,
+        margin: "2%",
     }
 })
