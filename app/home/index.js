@@ -5,17 +5,17 @@ export default function Page() {
     return (
         <View style={home.container}>
             <Text style={home.map}>지도 api</Text>
+            <View>
+                <Text style={home.infocase}>정보</Text>
+            </View>
             <Link href="/filter">
                 <Text style={home.filter}>
                     필터
                 </Text>
             </Link>
-            <View>
-                <Text style={home.infocase}>정보</Text>
-            </View>
             <View style={underbar.bar}>
                 <Text style={underbar.round}>
-                    <Link href="price">시세</Link>
+                    <Link href="/marketcondition">시세</Link>
                 </Text>
                 <Text style={underbar.round}>
                     <Link href="/map">지도</Link>
@@ -46,7 +46,7 @@ const home = StyleSheet.create({
         backgroundColor: "gray",
         width: 70,
         height: 40,
-        padding: 5,
+        padding: 6,
         fontSize: 20,
         top: "80vh",
         left: "75vw",
@@ -75,11 +75,11 @@ const underbar = StyleSheet.create({
     round: {
         backgroundColor: "lightblue",
         borderRadius: "50%",
-        width: "100%",
-        height: "100%",
+        width: "10vh",
+        height: "10vh",
         display: "flex",
-        justifyContent: "center", 
-        alignItems: "center", 
+        justifyContent: "center",
+        alignItems: "center",
     },
     main: {
         backgroundColor: "blue",
