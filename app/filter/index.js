@@ -15,13 +15,13 @@ export default function Page() {
             </View>
             <View style={filter.container}>
                 <Text style={filter.block}>
-
+                    면적
                 </Text>
                 <Text style={filter.block}>
-
+                    지역
                 </Text>
                 <Text style={filter.block}>
-
+                    시세
                 </Text>
             </View>
             <Text style={underbar.accept}>필터 설정완료</Text>
@@ -66,7 +66,7 @@ const filter = StyleSheet.create({
     block: {
         backgroundColor: "gray",
         width: "100%",
-        height: "20vh",
+        height: "25vh",
         marginBottom: "5vh"
     },
     area: {
