@@ -17,19 +17,22 @@ export default function Page() {
             <Text style={map.map}>
                 지도 api
             </Text>
+            <Text style={map.infocase}>
+                info
+            </Text>
             <View style={underbar.bar}>
+                <Text style={underbar.round}>
+                    <Link href="/map">지도</Link>
+                </Text>
+                <Text style={underbar.round}>
+                    <Link href="/home">홈</Link>
+                </Text>
+                <Text style={[underbar.round, underbar.main]}>검색</Text>
                 <Text style={underbar.round}>
                     <Link href="/option">설정</Link>
                 </Text>
                 <Text style={underbar.round}>
                     <Link href="/marketcondition">시세</Link>
-                </Text>
-                <Text style={[underbar.round, underbar.main]}>지도</Text>
-                <Text style={underbar.round}>
-                    <Link href="/home">홈</Link>
-                </Text>
-                <Text style={underbar.round}>
-                    <Link href="/search">검색</Link>
                 </Text>
             </View>
         </View>
@@ -42,7 +45,7 @@ const map = StyleSheet.create({
     },
     map: {
         width: "100vw",
-        height: "85vh",
+        height: "40vh",
         backgroundColor: "lightblue"
     },
     header: {
@@ -61,7 +64,11 @@ const map = StyleSheet.create({
         width: "80vw",
         display: "flex",
         alignItems: "center",
-    }
+    },
+    infocase: {
+        width: "100vw",
+        height: "45vh",
+    },
 })
 const underbar = StyleSheet.create({
     bar: {
@@ -74,7 +81,7 @@ const underbar = StyleSheet.create({
     },
     round: {
         backgroundColor: "lightblue",
-        borderRadius: "50%",
+        borderRadius: 50,
         width: "10vh",
         height: "10vh",
         display: "flex",
