@@ -16,13 +16,13 @@ export default function Page() {
 }
 const header = StyleSheet.create({
     headercontainer: {
-        height:"5vh",
-        width:"100vw"
+        height: "5vh",
+        width: "100vw"
     },
     cancel: {
         width: "5vh",
         height: "5vh",
-        borderRadius: "50%",
+        borderRadius: 10,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -31,17 +31,17 @@ const header = StyleSheet.create({
 })
 const option = StyleSheet.create({
     first: {
-        display:"flex",
-        width:"100vw",
-        height:"10vh",
+        display: "flex",
+        width: "100vw",
+        height: "10vh",
         backgroundColor: "rgb(212, 212, 212)",
-        alignItems:"center"
+        alignItems: "center"
     },
     second: {
-        display:"flex",
-        width:"100vw",
-        height:"10vh",
+        display: "flex",
+        width: "100vw",
+        height: "10vh",
         backgroundColor: "rgb(227, 227, 227)",
-        alignItems:"center"
+        alignItems: "center"
     }
 })

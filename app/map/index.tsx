@@ -1,23 +1,27 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { Text, Box } from "native-base";
 import { Link } from 'expo-router'
 
 export default function Page() {
     return (
-        <View style={map.container}>
-            <View style={map.header}>
-                <Link href="/filter">
-                    <Text style={map.filter}>
-                        필터
-                    </Text>
-                </Link>
+        <Box bg="brand.50" style={map.container}>
+            <Box style={map.header}>
+                <Box bg="amber.100">
+                    <Link href="/filter">
+                        <Text style={map.filter}>
+                            필터
+                        </Text>
+                    </Link>
+                </Box>
+
                 <Text style={map.search}>
                     검색
                 </Text>
-            </View>
+            </Box>
             <Text style={map.map}>
                 지도 api
             </Text>
-            <View style={underbar.bar}>
+            <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
                     <Link href="/option">설정</Link>
                 </Text>
@@ -31,8 +35,8 @@ export default function Page() {
                 <Text style={underbar.round}>
                     <Link href="/search">검색</Link>
                 </Text>
-            </View>
-        </View>
+            </Box>
+        </Box>
     );
 }
 
@@ -43,18 +47,17 @@ const map = StyleSheet.create({
     map: {
         width: "100vw",
         height: "85vh",
-        backgroundColor: "lightblue"
     },
     header: {
         display: "flex",
         flexDirection: "row"
     },
     filter: {
-        backgroundColor: "rgba(30, 30, 30, 0.3)",
         width: "20vw",
         height: "5vh",
         display: "flex",
         alignItems: "center",
+        justifyContent:"center",
     },
     search: {
         height: "5vh",
@@ -70,11 +73,10 @@ const underbar = StyleSheet.create({
         width: "100vw",
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "rgba(30, 30, 30, 0.1)"
     },
     round: {
         backgroundColor: "lightblue",
-        borderRadius: 50,
+        borderRadius: 20,
         width: "10vh",
         height: "10vh",
         display: "flex",

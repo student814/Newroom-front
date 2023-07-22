@@ -1,19 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Link } from 'expo-router'
+import { Box, Text } from "native-base";
 
 export default function Page() {
     return (
-        <View style={home.container}>
+        <Box bg="brand.50" style={home.container}>
             <Text style={home.map}>지도 api</Text>
-            <View>
+            <Box>
                 <Text style={home.infocase}>정보</Text>
-            </View>
-            <Link href="/filter">
-                <Text style={home.filter}>
-                    필터
-                </Text>
-            </Link>
-            <View style={underbar.bar}>
+            </Box>
+            <Box bg="amber.100" style={home.filter}>
+                <Link href="/filter">
+                    <Text>
+                        필터
+                    </Text>
+                </Link>
+            </Box>
+            <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
                     <Link href="/marketcondition">시세</Link>
                 </Text>
@@ -27,8 +30,8 @@ export default function Page() {
                 <Text style={underbar.round}>
                     <Link href="/option">설정</Link>
                 </Text>
-            </View>
-        </View>
+            </Box>
+        </Box>
     )
 }
 
@@ -39,19 +42,19 @@ const home = StyleSheet.create({
     map: {
         width: "100vw",
         height: "60vh",
-        backgroundColor: "lightblue",
 
     },
     filter: {
-        backgroundColor: "gray",
-        width: 70,
-        height: 40,
-        padding: 6,
-        fontSize: 20,
-        top: "80vh",
-        left: "75vw",
-        position: "fixed",
-        textAlign: "center",
+        position: "absolute",
+        display: "flex",
+        width: 35,
+        height: 70,
+        top:"70%",
+        right:0,
+        justifyContent: "center",
+        alignItems: "center",
+        borderTopLeftRadius:50,
+        borderBottomLeftRadius:50,
     },
     infocase: {
         width: "100vw",
@@ -70,11 +73,10 @@ const underbar = StyleSheet.create({
         width: "100vw",
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "rgba(30, 30, 30, 0.1)"
     },
     round: {
         backgroundColor: "lightblue",
-        borderRadius: "50%",
+        borderRadius: 20,
         width: "10vh",
         height: "10vh",
         display: "flex",

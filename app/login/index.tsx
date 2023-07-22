@@ -5,7 +5,7 @@ export default function Page() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>로그인</Text>
-            <Link href ="/home">
+            <Link href="/home">
                 <Text style={{ fontSize: 40 }}>구글로 로그인</Text>
             </Link>
         </View>
