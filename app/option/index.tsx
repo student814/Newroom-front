@@ -1,5 +1,5 @@
-import { StyleSheet, Pressable } from "react-native"; // react-native의 Pressable 추가
-import { Box, Text } from "native-base"; // native-base의 Box와 Text 사용
+import { StyleSheet, Pressable } from "react-native";
+import { Box, Text } from "native-base";
 import { useRouter } from "expo-router";
 
 export default function Page() {

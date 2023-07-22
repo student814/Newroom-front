@@ -19,7 +19,6 @@ export default function Page() {
         }),
     ).current;
 
-    // Animated.ValueXY에 적용되는 좌표 변환 함수입니다.
     const getTranslateTransform = () => {
         return [
             {
@@ -35,7 +34,7 @@ export default function Page() {
                 <Text style={home.infocase}>정보</Text>
             </Box>
             <Box>
-                {/* 다른 컨텐츠를 추가하거나 변경할 수 있습니다. */}
+                
             </Box>
             <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
