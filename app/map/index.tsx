@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Text, Box } from "native-base";
-import { Link } from 'expo-router'
+import { Link } from 'expo-router';
 
 export default function Page() {
     return (

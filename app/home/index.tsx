@@ -1,20 +1,41 @@
-import { StyleSheet } from "react-native";
+import React, { useRef } from 'react';
+import { StyleSheet, PanResponder, Animated } from "react-native";
 import { Link } from 'expo-router'
 import { Box, Text } from "native-base";
 
 export default function Page() {
+    const site = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
+
+    const panResponder = useRef(
+        PanResponder.create({
+            onMoveShouldSetPanResponder: () => true,
+            onPanResponderMove: Animated.event([
+                null,
+                { dx: site.x, dy: site.y },
+            ]),
+            onPanResponderRelease: () => {
+                site.extractOffset();
+            },
+        }),
+    ).current;
+
+    // Animated.ValueXY에 적용되는 좌표 변환 함수입니다.
+    const getTranslateTransform = () => {
+        return [
+            {
+                translateY: site.y,
+            },
+        ];
+    };
+
     return (
         <Box bg="brand.50" style={home.container}>
-            <Text style={home.map}>지도 api</Text>
+            <Text style={home.map}>지도 API</Text>
             <Box>
                 <Text style={home.infocase}>정보</Text>
             </Box>
-            <Box bg="amber.100" style={home.filter}>
-                <Link href="/filter">
-                    <Text>
-                        필터
-                    </Text>
-                </Link>
+            <Box>
+                {/* 다른 컨텐츠를 추가하거나 변경할 수 있습니다. */}
             </Box>
             <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
@@ -31,10 +52,19 @@ export default function Page() {
                     <Link href="/option">설정</Link>
                 </Text>
             </Box>
+            <Animated.View
+                style={[{ transform: getTranslateTransform() }, home.filter]}
+                {...panResponder.panHandlers}
+            >
+                <Link href="/filter">
+                    <Text>
+                        필터
+                    </Text>
+                </Link>
+            </Animated.View>
         </Box>
     )
 }
-
 const home = StyleSheet.create({
     container: {
         flex: 1,
@@ -42,17 +72,17 @@ const home = StyleSheet.create({
     map: {
         width: "100vw",
         height: "60vh",
-
     },
     filter: {
         position: "absolute",
+        top: "70vh",
+        right: 0,
         display: "flex",
         width: 35,
         height: 70,
-        top:"70%",
-        right:0,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#fef3c7",
         borderTopLeftRadius:50,
         borderBottomLeftRadius:50,
     },
@@ -62,10 +92,9 @@ const home = StyleSheet.create({
     },
     info: {
         color: "gray",
-        width: "100vw",
-        height: "20vh",
     }
 })
+
 const underbar = StyleSheet.create({
     bar: {
         flex: 1,

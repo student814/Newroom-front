@@ -1,4 +1,5 @@
-import { StyleSheet, Pressable, } from "react-native";
+// 수정된 디자인 코드
+import { StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { Text, Box } from "native-base";
 export default function Page() {
@@ -9,43 +10,43 @@ export default function Page() {
     const makeregion = region.map((v) => v);
     return (
         <Box bg="brand.50">
-            <Box style={header.upmenu}>
-                <Pressable style={header.cancel} onPress={() => router.back()}>＜</Pressable>
-                <Text style={header.here}>
+            <Box style={styles.header}>
+                <Pressable style={styles.cancel} onPress={() => router.back()}>＜</Pressable>
+                <Text style={styles.title}>
                     필터
                 </Text>
-                <Box bg="brand.200" style={header.reset}>
+                <Box bg="brand.200" style={styles.reset}>
                     <Text>
                         필터 초기화
                     </Text>
                 </Box>
             </Box>
-            <Box style={filter.container}>
-                <Box bg="muted.50" style={filter.block}>
-                    <Text style={filter.title}>면적</Text>
-                    <Text style={filter.selectbox}>
+            <Box style={styles.filterContainer}>
+                <Box bg="muted.50" style={styles.filterBlock}>
+                    <Text style={styles.filterTitle}>면적</Text>
+                    <Text style={styles.selectBox}>
                         {makearea.map((areatext) => (
-                            <Text bg="amber.100" style={filter.select}>{areatext}</Text>
+                            <Text bg="amber.100" style={styles.select}>{areatext}</Text>
                         ))}
                     </Text>
                 </Box>
-                <Box bg="muted.50" style={filter.block}>
-                    <Text style={filter.title}>지역</Text>
-                    <Text style={filter.selectbox}>
+                <Box bg="muted.50" style={styles.filterBlock}>
+                    <Text style={styles.filterTitle}>지역</Text>
+                    <Text style={styles.selectBox}>
                         {makeregion.map((regiontext) => (
-                            <Text bg="amber.100" style={filter.select}>{regiontext}</Text>
+                            <Text bg="amber.100" style={styles.select}>{regiontext}</Text>
                         ))}
                     </Text>
                 </Box>
 
-                <Box bg="muted.50" style={filter.block}>
-                    <Text style={filter.title}>시세</Text>
+                <Box bg="muted.50" style={styles.filterBlock}>
+                    <Text style={styles.filterTitle}>시세</Text>
                     <Text>
-                        <Text style={filter.pricebox}>
-                            <Text style={price.down}>
+                        <Text style={styles.priceBox}>
+                            <Text style={styles.priceDown}>
                                 최저가 <input type="number" />
                             </Text>
-                            <Text style={price.up}>
+                            <Text style={styles.priceUp}>
                                 최고가 <input type="number" />
                             </Text>
                         </Text>
@@ -53,14 +54,14 @@ export default function Page() {
                 </Box>
             </Box>
             <Box bg="primary.200">
-                <Text style={underbar.accept}>필터 설정완료</Text>
+                <Text style={styles.accept}>필터 설정완료</Text>
             </Box>
         </Box>
     );
 }
 
-const header = StyleSheet.create({
-    upmenu: {
+const styles = StyleSheet.create({
+    header: {
         width: "100vw",
         height: "5vh",
         display: "flex",
@@ -74,8 +75,8 @@ const header = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    here: {
-        width: "70vw",
+    title: {
+        width: "75vw",
         display: "flex",
         alignItems: "center",
     },
@@ -85,62 +86,56 @@ const header = StyleSheet.create({
         textAlign: "center",
         justifyContent: "center",
         borderRadius: 10,
-    }
-})
-const filter = StyleSheet.create({
-    container: {
+    },
+    filterContainer: {
         height: "85vh",
         width: "100vw"
     },
-    block: {
+    filterBlock: {
         width: "100%",
         height: "20vh",
         marginBottom: "5vh",
     },
-    title: {
+    filterTitle: {
         fontSize: 20,
-        fontweight: "bold"
+        fontWeight: "bold"
     },
     select: {
-        display:"flex",
-        width:"20vw",
-        height:"6vh",
-        margin:1,
-        alignItems:"center",
-        justifyContent:"center",
+        display: "flex",
+        width: "20vw",
+        height: "6vh",
+        margin: 1,
+        alignItems: "center",
+        justifyContent: "center",
         borderRadius: 10,
     },
-    selectbox: {
-        marginTop:"1vh",
-        marginLeft:"1vw",
-        marginEnd:"1vw",
+    selectBox: {
+        marginTop: "1vh",
+        marginLeft: "1vw",
+        marginEnd: "1vw",
         width: "98vw",
         height: "15vh",
-        display:"flex",
-        flexDirection:"row",
-        flexWrap:"wrap",
-        justifyContent:"space-between",
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
     },
-    pricebox: {
-        marginTop:"1vh",
-        marginLeft:"1vw",
+    priceBox: {
+        marginTop: "1vh",
+        marginLeft: "1vw",
         width: "98vw",
         height: "10vh",
-        display:"flex",
-        flexDirection:"column",
-        flexWrap:"wrap",
-        justifyContent:"space-between",
-    }
-})
-const price = StyleSheet.create({
-    down: {
+        display: "flex",
+        flexDirection: "column",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+    },
+    priceDown: {
         color: "blue"
     },
-    up: {
+    priceUp: {
         color: "red"
-    }
-})
-const underbar = StyleSheet.create({
+    },
     accept: {
         width: "100vw",
         height: "10vh",
@@ -149,4 +144,4 @@ const underbar = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     }
-})
+});
