@@ -23,17 +23,17 @@ export default function Page() {
             </Text>
             <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
-                    <Link href="/option">설정</Link>
+                    <Link href="/filter/option">설정</Link>
                 </Text>
                 <Text style={underbar.round}>
-                    <Link href="/marketcondition">시세</Link>
+                    <Link href="/filter/marketcondition">시세</Link>
                 </Text>
                 <Text style={[underbar.round, underbar.main]}>지도</Text>
                 <Text style={underbar.round}>
-                    <Link href="/home">홈</Link>
+                    <Link href="/filter/home">홈</Link>
                 </Text>
                 <Text style={underbar.round}>
-                    <Link href="/search">검색</Link>
+                    <Link href="/filter/search">검색</Link>
                 </Text>
             </Box>
         </Box>
@@ -57,7 +57,7 @@ const map = StyleSheet.create({
         height: "5vh",
         display: "flex",
         alignItems: "center",
-        justifyContent:"center",
+        justifyContent: "center",
     },
     search: {
         height: "5vh",

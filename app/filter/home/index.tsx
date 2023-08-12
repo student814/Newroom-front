@@ -34,21 +34,21 @@ export default function Page() {
                 <Text style={home.infocase}>정보</Text>
             </Box>
             <Box>
-                
+
             </Box>
             <Box bg="muted.200" style={underbar.bar}>
                 <Text style={underbar.round}>
-                    <Link href="/marketcondition">시세</Link>
+                    <Link href="/filter/marketcondition">시세</Link>
                 </Text>
                 <Text style={underbar.round}>
-                    <Link href="/map">지도</Link>
+                    <Link href="/filter/map">지도</Link>
                 </Text>
                 <Text style={[underbar.round, underbar.main]}>홈</Text>
                 <Text style={underbar.round}>
-                    <Link href="/search">검색</Link>
+                    <Link href="/filter/search">검색</Link>
                 </Text>
                 <Text style={underbar.round}>
-                    <Link href="/option">설정</Link>
+                    <Link href="/filter/option">설정</Link>
                 </Text>
             </Box>
             <Animated.View
@@ -82,8 +82,8 @@ const home = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#fef3c7",
-        borderTopLeftRadius:50,
-        borderBottomLeftRadius:50,
+        borderTopLeftRadius: 50,
+        borderBottomLeftRadius: 50,
     },
     infocase: {
         width: "100vw",

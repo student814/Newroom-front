@@ -1,13 +1,23 @@
-// 수정된 디자인 코드
+import React, { useState } from "react"
 import { StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { Text, Box } from "native-base";
-export default function Page() {
+
+export default function FilterPage() {
     const router = useRouter();
     const area = ['10평 이하', '10평대', '20평대', '30평대', '40평대', '50평대', '60평대', '70평 이상'];
     const region = ['수도권', '강원도', '충청남도', '충청북도', '전라북도', '전라남도', '경상북도', '경상남도']
     const makearea = area.map((v) => v);
     const makeregion = region.map((v) => v);
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
+
+    function handleFilter() {
+        const queryParams = `?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+        router.push(`/filter/marketcondition${queryParams}`);
+      }
+    
+    
     return (
         <Box bg="brand.50">
             <Box style={styles.header}>
@@ -44,17 +54,19 @@ export default function Page() {
                     <Text>
                         <Text style={styles.priceBox}>
                             <Text style={styles.priceDown}>
-                                최저가 <input type="number" />
+                                최저가 <input type="number" style={styles.input}/>
                             </Text>
                             <Text style={styles.priceUp}>
-                                최고가 <input type="number" />
+                                최고가 <input type="number" style={styles.input}/>
                             </Text>
                         </Text>
                     </Text>
                 </Box>
             </Box>
             <Box bg="primary.200">
-                <Text style={styles.accept}>필터 설정완료</Text>
+                <Pressable style={styles.accept} onPress={handleFilter}>
+                    <Text>필터 설정완료</Text>
+                </Pressable>
             </Box>
         </Box>
     );
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
     priceBox: {
         marginTop: "1vh",
         marginLeft: "1vw",
-        width: "98vw",
+        width: "50vw",
         height: "10vh",
         display: "flex",
         flexDirection: "column",
@@ -131,10 +143,15 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     priceDown: {
-        color: "blue"
+        color: "blue",
+        padding:"2vw",
     },
     priceUp: {
-        color: "red"
+        color: "red",
+        padding:"2vw",
+    },
+    input: {
+        width:"20vw"
     },
     accept: {
         width: "100vw",

@@ -1,17 +1,17 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Link } from 'expo-router'
-
+import { Box } from 'native-base'
 export default function Page() {
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
+    <Box style={styles.container}>
+      <Box style={styles.main}>
         <Link style={{
           textAlign: 'center',
           fontSize: 30,
           fontWeight: 'bold'
-        }} href="/login">시작</Link>
-      </View>
-    </View>
+        }} href="/filter/login">시작</Link>
+      </Box>
+    </Box>
   );
 }
 
