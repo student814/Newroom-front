@@ -9,7 +9,7 @@ export default function Page() {
           textAlign: 'center',
           fontSize: 30,
           fontWeight: 'bold'
-        }} href="/filter/login">시작</Link>
+        }} href="/login">시작</Link>
       </Box>
     </Box>
   );

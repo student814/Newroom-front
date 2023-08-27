@@ -1,59 +1,82 @@
-import { StyleSheet, Pressable } from "react-native";
-import { Box, Text } from "native-base";
-import { useRouter } from "expo-router";
+import React from 'react';
+import { StyleSheet, Pressable } from 'react-native';
+import { Box, Text } from 'native-base';
+import { useRouter } from 'expo-router';
 
 export default function Page() {
     const router = useRouter();
+
     return (
         <Box bg="brand.50" style={option.container}>
             <Box style={header.headercontainer}>
                 <Box bg="amber.50" style={header.cancel}>
-                    <Pressable onPress={() => router.back()}>＜</Pressable>
+                    <Pressable onPress={() => router.back()}>
+                        <Text style={{fontWeight:"bold"}}>＜</Text>
+                    </Pressable>
                 </Box>
                 <Box style={header.explain}>
                     <Text>설정</Text>
                 </Box>
             </Box>
-            <Text bg="primary.200" style={option.list}>이용약관</Text>
-            <Text bg="primary.100" style={option.list}>위치기반 서비스 이용 약관</Text>
-            <Text bg="primary.200" style={option.list}>부동산 정보 알림</Text>
-            <Text bg="primary.100" style={option.list}>개인정보 처리 방침</Text>
+            <Box bg="primary.200" style={option.list}>
+                <Text >
+                    이용약관
+                </Text>
+            </Box>
+            <Box  bg="primary.100" style={option.list}>
+                <Text>
+                    위치기반 서비스 이용 약관
+                </Text>
+            </Box>
+            <Box bg="primary.200" style={option.list}>
+                <Text>
+                    부동산 정보 알림
+                </Text>
+            </Box>
+            <Box bg="primary.100" style={option.list}>
+                <Text>
+                    개인정보 처리 방침
+                </Text>
+            </Box>
+
         </Box>
     );
 }
 
 const header = StyleSheet.create({
     headercontainer: {
-        display: "flex",
-        height: "5vh",
-        width: "100vw",
-        flexDirection: "row",
+        display: 'flex',
+        width: '200%',
+        flexDirection: 'row',
+        height: "5%"
     },
     cancel: {
-        display: "flex",
-        width: "5vh",
-        height: "5vh",
+        display: 'flex',
+        width: '5%',
+        height: '100%',
         borderRadius: 10,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent:"center",
+        alignItems:"center",
     },
     explain: {
-        display: "flex",
-        height: "5vh",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        height: '100%',
+        width:'50%',
+        borderWidth: 1,
+        justifyContent:"center",
+        borderColor:"white",
     },
 });
 
 const option = StyleSheet.create({
     container: {
-        width: "100vw",
-        height: "100vh",
+        width: '100%',
+        height: '100%',
     },
     list: {
-        display: "flex",
-        width: "100vw",
-        height: "10vh",
-        alignItems: "center",
+        display: 'flex',
+        width: '100%',
+        height: '10%',
+        justifyContent:"center",
     },
 });

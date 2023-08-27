@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { StyleSheet, Pressable } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Pressable, TextInput } from "react-native";
 import { useRouter } from "expo-router";
 import { Text, Box } from "native-base";
 
@@ -9,19 +9,13 @@ export default function FilterPage() {
     const region = ['수도권', '강원도', '충청남도', '충청북도', '전라북도', '전라남도', '경상북도', '경상남도']
     const makearea = area.map((v) => v);
     const makeregion = region.map((v) => v);
-    const [minPrice, setMinPrice] = useState("");
-    const [maxPrice, setMaxPrice] = useState("");
 
-    function handleFilter() {
-        const queryParams = `?minPrice=${minPrice}&maxPrice=${maxPrice}`;
-        router.push(`/filter/marketcondition${queryParams}`);
-      }
-    
-    
     return (
-        <Box bg="brand.50">
+        <Box bg="brand.50" style={styles.container}>
             <Box style={styles.header}>
-                <Pressable style={styles.cancel} onPress={() => router.back()}>＜</Pressable>
+                <Pressable style={styles.cancel} onPress={() => router.back()}>
+                    <Text>＜</Text>
+                </Pressable>
                 <Text style={styles.title}>
                     필터
                 </Text>
@@ -34,37 +28,31 @@ export default function FilterPage() {
             <Box style={styles.filterContainer}>
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>면적</Text>
-                    <Text style={styles.selectBox}>
-                        {makearea.map((areatext) => (
-                            <Text bg="amber.100" style={styles.select}>{areatext}</Text>
+                    <Box style={styles.selectBox}>
+                        {makearea.map((areatext, index) => (
+                            <Text key={index} bg="amber.100" style={styles.select}>{areatext}</Text>
                         ))}
-                    </Text>
+                    </Box>
                 </Box>
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>지역</Text>
-                    <Text style={styles.selectBox}>
-                        {makeregion.map((regiontext) => (
-                            <Text bg="amber.100" style={styles.select}>{regiontext}</Text>
+                    <Box style={styles.selectBox}>
+                        {makeregion.map((regiontext, index) => (
+                            <Text key={index} bg="amber.100" style={styles.select}>{regiontext}</Text>
                         ))}
-                    </Text>
+                    </Box>
                 </Box>
-
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>시세</Text>
-                    <Text>
-                        <Text style={styles.priceBox}>
-                            <Text style={styles.priceDown}>
-                                최저가 <input type="number" style={styles.input}/>
-                            </Text>
-                            <Text style={styles.priceUp}>
-                                최고가 <input type="number" style={styles.input}/>
-                            </Text>
-                        </Text>
-                    </Text>
+                    <Box style={styles.priceBox}>
+                        <TextInput style={styles.input} placeholder="최저가" />
+                        <TextInput style={styles.input} placeholder="최고가" />
+                    </Box>
                 </Box>
+
             </Box>
-            <Box bg="primary.200">
-                <Pressable style={styles.accept} onPress={handleFilter}>
+            <Box bg="primary.200" style={styles.accept}>
+                <Pressable>
                     <Text>필터 설정완료</Text>
                 </Pressable>
             </Box>
@@ -73,92 +61,95 @@ export default function FilterPage() {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
     header: {
-        width: "100vw",
-        height: "5vh",
+        width: "100%",
+        height: "5%",
         display: "flex",
         flexDirection: "row"
     },
     cancel: {
-        width: "5vh",
-        height: "5vh",
+        width: "10%",
+        height: "100%",
         borderRadius: 10,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
     },
     title: {
-        width: "75vw",
         display: "flex",
-        alignItems: "center",
+        height: "100%",
+        width: "70%",
+        textAlign: "center",
+        paddingTop: "2%",
     },
     reset: {
-        width: "20vw",
+        width: "20%",
         display: "flex",
         textAlign: "center",
         justifyContent: "center",
         borderRadius: 10,
     },
     filterContainer: {
-        height: "85vh",
-        width: "100vw"
+        height: "85%",
+        width: "100%",
     },
     filterBlock: {
         width: "100%",
-        height: "20vh",
-        marginBottom: "5vh",
+        height: "20%",
+        marginBottom: "5%",
     },
     filterTitle: {
         fontSize: 20,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        margin: 2,
     },
     select: {
         display: "flex",
-        width: "20vw",
-        height: "6vh",
-        margin: 1,
-        alignItems: "center",
-        justifyContent: "center",
+        width: "20%",
+        height: "200%",
+        margin: 2,
         borderRadius: 10,
+        textAlign: "center",
+        padding: "2%",
     },
     selectBox: {
-        marginTop: "1vh",
-        marginLeft: "1vw",
-        marginEnd: "1vw",
-        width: "98vw",
-        height: "15vh",
+        marginTop: "1%",
+        marginLeft: "1%",
+        marginEnd: "1%",
+        width: "98%",
+        height: "15%",
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-between",
+        alignItems: "center",
     },
     priceBox: {
-        marginTop: "1vh",
-        marginLeft: "1vw",
-        width: "50vw",
-        height: "10vh",
+        marginTop: "1%",
+        marginLeft: "1%",
+        width: "40%",
+        height: "20%",
         display: "flex",
         flexDirection: "column",
         flexWrap: "wrap",
         justifyContent: "space-between",
     },
-    priceDown: {
-        color: "blue",
-        padding:"2vw",
-    },
-    priceUp: {
-        color: "red",
-        padding:"2vw",
-    },
     input: {
-        width:"20vw"
+        color: "blue",
+        width: "100%",
+        height: "100%",
+        borderWidth: 1,
+        borderColor: "blue",
+        borderRadius: 5,
     },
     accept: {
-        width: "100vw",
-        height: "10vh",
-        bottom: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
+        width: "100%",
+        height: "10%",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
     }
 });

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { StyleSheet, PanResponder, Animated } from "react-native";
-import { Link } from 'expo-router'
+import { Link } from 'expo-router';
 import { Box, Text } from "native-base";
 
 export default function Page() {
@@ -28,31 +28,31 @@ export default function Page() {
     };
 
     return (
-        <Box bg="brand.50" style={home.container}>
-            <Text style={home.map}>지도 API</Text>
+        <Box bg="brand.50" style={styles.container}>
+            <Text style={styles.map}>지도 API</Text>
             <Box>
-                <Text style={home.infocase}>정보</Text>
+                <Text style={styles.infocase}>정보</Text>
             </Box>
             <Box>
 
             </Box>
-            <Box bg="muted.200" style={underbar.bar}>
-                <Text style={underbar.round}>
-                    <Link href="/filter/marketcondition">시세</Link>
-                </Text>
-                <Text style={underbar.round}>
-                    <Link href="/filter/map">지도</Link>
-                </Text>
+            <Box style={underbar.bar}>
+                <Link style={underbar.round} href="/filter/marketcondition">
+                    <Text>시세</Text>
+                </Link>
+                <Link style={underbar.round} href="/filter/map">
+                    <Text>지도</Text>
+                </Link>
                 <Text style={[underbar.round, underbar.main]}>홈</Text>
-                <Text style={underbar.round}>
-                    <Link href="/filter/search">검색</Link>
-                </Text>
-                <Text style={underbar.round}>
-                    <Link href="/filter/option">설정</Link>
-                </Text>
+                <Link style={underbar.round} href="/filter/search">
+                    <Text>검색</Text>
+                </Link>
+                <Link style={underbar.round} href="/filter/option">
+                    <Text>설정</Text>
+                </Link>
             </Box>
             <Animated.View
-                style={[{ transform: getTranslateTransform() }, home.filter]}
+                style={[{ transform: getTranslateTransform() }, styles.filter]}
                 {...panResponder.panHandlers}
             >
                 <Link href="/filter">
@@ -62,57 +62,58 @@ export default function Page() {
                 </Link>
             </Animated.View>
         </Box>
-    )
+    );
 }
-const home = StyleSheet.create({
+
+const styles = StyleSheet.create({
     container: {
         flex: 1,
+        overflow: "hidden",
     },
     map: {
-        width: "100vw",
-        height: "60vh",
+        height: "60%",
     },
     filter: {
         position: "absolute",
-        top: "70vh",
+        top: "70%",
         right: 0,
         display: "flex",
         width: 35,
         height: 70,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fef3c7",
+        backgroundColor: "#a5b4fc",
         borderTopLeftRadius: 50,
         borderBottomLeftRadius: 50,
     },
+
     infocase: {
-        width: "100vw",
-        height: "30vh",
+        height: "30%",
     },
     info: {
         color: "gray",
-    }
-})
-
+    },
+});
 const underbar = StyleSheet.create({
     bar: {
-        flex: 1,
-        height: "10vh",
-        width: "100vw",
+        display: "flex",
+        height: "10%",
         flexDirection: "row",
         justifyContent: "space-between",
+        overflow: "hidden",
     },
     round: {
-        backgroundColor: "lightblue",
-        borderRadius: 20,
-        width: "10vh",
-        height: "10vh",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: "#E0DFFF",
+        borderRadius: 20,
+        width: "20%",
+        height: "100%",
+        flexDirection: "column",
+        textAlign: "center",
+        padding: "6%",
     },
     main: {
-        backgroundColor: "blue",
-        color: "white",
+        backgroundColor: "#9F9FFF",
+        color: "black",
     }
-})
+  })
