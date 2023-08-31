@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView } from 'react-native'; // ScrollView를 사용하여 내용이 화면을 벗어날 경우 스크롤 가능하도록
-import { Text, Box, FlatList } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Text, Box } from 'native-base';
 import { Link } from 'expo-router';
-import { color } from 'react-native-reanimated';
 
 export default function Page() {
   return (
     <Box bg="brand.50" flex={1}>
-      <ScrollView contentContainerStyle={styles.container}>
+      <Box style={styles.nw}></Box>
         <Box style={styles.header}>
           <Box style={styles.count}>
             <Text>찾아진 매물의 개수:</Text>
@@ -46,28 +44,32 @@ export default function Page() {
             <Text>홈</Text>
           </Link>
         </Box>
-      </ScrollView>
     </Box>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+      width:"100%",
+      height:"100%"
+  },
+  nw: {
+    width:"100%",
+    height:"5%"
   },
   header: {
     display: 'flex',
     flexDirection: 'column',
-    height: 60,
+    height:"10%"
   },
   count: {
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    width:"100%",
+    height: "50%",
+    textAlign:"center",
   },
   filter: {
-    width: 60,
-    height: 30,
+    width:"15%",
+    height: "50%",
     justifyContent: 'center',
     alignItems: 'center',
     left: 0,
@@ -76,22 +78,9 @@ const styles = StyleSheet.create({
   filterText: {
     color: "white"
   },
-  input: {
-    width: 40,
-    height: 30,
-    marginLeft: 10,
-    marginRight: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 5,
-  },
   info: {
-    flex: 1,
-  },
-  infoItem: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgray',
-    padding: 10,
+    width:"100%",
+    height:"75%",
   },
 });
 

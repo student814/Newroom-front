@@ -29,6 +29,7 @@ export default function Page() {
 
     return (
         <Box bg="brand.50" style={styles.container}>
+            <Box style={styles.nw}></Box>
             <Text style={styles.map}>지도 API</Text>
             <Box>
                 <Text style={styles.infocase}>정보</Text>
@@ -70,8 +71,12 @@ const styles = StyleSheet.create({
         flex: 1,
         overflow: "hidden",
     },
+    nw: {
+        width:"100%",
+        height:"5%"
+    },
     map: {
-        height: "60%",
+        height: "55%",
     },
     filter: {
         position: "absolute",

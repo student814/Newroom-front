@@ -8,8 +8,9 @@ export default function Page() {
 
     return (
         <Box bg="brand.50" style={option.container}>
+            <Box style={header.nw}></Box>
             <Box style={header.headercontainer}>
-                <Box bg="amber.50" style={header.cancel}>
+                <Box style={header.cancel}>
                     <Pressable onPress={() => router.back()}>
                         <Text style={{fontWeight:"bold"}}>＜</Text>
                     </Pressable>
@@ -44,6 +45,10 @@ export default function Page() {
 }
 
 const header = StyleSheet.create({
+    nw: {
+        width:"100%",
+        height:"5%"  
+    },
     headercontainer: {
         display: 'flex',
         width: '200%',

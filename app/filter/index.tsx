@@ -12,6 +12,7 @@ export default function FilterPage() {
 
     return (
         <Box bg="brand.50" style={styles.container}>
+            <Box style={styles.nw}></Box>
             <Box style={styles.header}>
                 <Pressable style={styles.cancel} onPress={() => router.back()}>
                     <Text>＜</Text>
@@ -64,6 +65,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    nw: {
+        width:"100%",
+        height:"5%"
+    },
     header: {
         width: "100%",
         height: "5%",
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     filterContainer: {
-        height: "85%",
+        height: "80%",
         width: "100%",
     },
     filterBlock: {

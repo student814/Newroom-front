@@ -5,18 +5,18 @@ import { Link } from 'expo-router'
 export default function Page() {
     return (
         <Box bg="brand.50" style={map.container}>
+            <Box style={header.nw}></Box>
             <Box style={header.header}>
-
-            <Box style={header.filterBox}>
-                <Link href="/filter" style={header.filterLink}>
-                    <Text style={header.buttonText}>
-                        필터
-                    </Text>
-                </Link>
-            </Box>
-            <Box style={header.searchBox}>
-                <TextInput style={header.search} placeholder="검색" />
-            </Box>
+                <Box style={header.filterBox}>
+                    <Link href="/filter" style={header.filterLink}>
+                        <Text style={header.buttonText}>
+                            필터
+                        </Text>
+                    </Link>
+                </Box>
+                <Box style={header.searchBox}>
+                    <TextInput style={header.search} placeholder="검색" />
+                </Box>
             </Box>
             <Box style={map.map}>
                 <Text>
@@ -57,6 +57,10 @@ export default function Page() {
     );
 }
 const header = StyleSheet.create({
+    nw: {
+        width:"100%",
+        height:"5%"
+    },
     header: {
         display: "flex",
         flexDirection: "row",
@@ -106,7 +110,7 @@ const info = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         width: "100%",
-        height: "45%",
+        height: "40%",
     },
     area: {
         width: "30%",
