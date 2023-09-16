@@ -5,7 +5,6 @@ import { Link } from 'expo-router';
 
 export default function Page() {
     const [searchValue, setSearchValue] = useState(""); // 검색 입력값을 상태로 관리
-    const [apiData, setApiData] = useState(null); // API 응답 데이터를 상태로 관리
 
     useEffect(() => {
         // 검색 입력값이 바뀔 때마다 수행될 코드
@@ -13,25 +12,6 @@ export default function Page() {
         // 예: 검색 결과를 가져와서 표시하거나 다른 상태를 업데이트할 수 있습니다.
         console.log("Search value changed:", searchValue);
     }, [searchValue]); // 검색 입력값이 바뀔 때마다 실행되도록 설정
-
-    useEffect(() => {
-        fetch(`https://apis.openapi.sk.com/tmap/pois?version=1&searchKeyword=${encodeURIComponent(searchValue)}&searchType=allEO&poiGroupYn=N`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'appKey': 'FSjBb8AEFj4RNyp9LJHFlavV1Pqtd4F41NPbUSDN'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                // API 응답 데이터 처리
-                setApiData(data);
-            })
-            .catch(error => {
-                // 에러 처리
-                console.error('Error:', error);
-            });
-    }, []);
 
     return (
         <Box bg="brand.50" style={map.container}>

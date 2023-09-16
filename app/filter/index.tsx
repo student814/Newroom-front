@@ -7,8 +7,10 @@ export default function FilterPage() {
     const router = useRouter();
     const area = ['10평 이하', '10평대', '20평대', '30평대', '40평대', '50평대', '60평대', '70평 이상'];
     const region = ['수도권', '강원도', '충청남도', '충청북도', '전라북도', '전라남도', '경상북도', '경상남도']
-    const makearea = area.map((v) => v);
-    const makeregion = region.map((v) => v);
+
+    // 각 필터 항목에 대한 상태 변수 추가
+    const [selectedArea, setSelectedArea] = useState("");
+    const [selectedRegion, setSelectedRegion] = useState("");
 
     return (
         <Box bg="brand.50" style={styles.container}>
@@ -30,27 +32,39 @@ export default function FilterPage() {
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>면적</Text>
                     <Box style={styles.selectBox}>
-                        {makearea.map((areatext, index) => (
-                            <Text key={index} bg="amber.100" style={styles.select}>{areatext}</Text>
+                        {area.map((areatext, index) => (
+                            <Pressable key={index}
+                                style={[
+                                    styles.select,
+                                    selectedArea === areatext && { backgroundColor: "#c7d2fe" },
+                                ]} onPress={() => setSelectedArea(areatext)}>
+                                <Text key={index}>{areatext}</Text>
+                            </Pressable>
                         ))}
                     </Box>
                 </Box>
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>지역</Text>
                     <Box style={styles.selectBox}>
-                        {makeregion.map((regiontext, index) => (
-                            <Text key={index} bg="amber.100" style={styles.select}>{regiontext}</Text>
+                        {region.map((regiontext, index) => (
+                            <Pressable key={index}
+                                style={[
+                                    styles.select,
+                                    selectedRegion === regiontext && { backgroundColor: "#c7d2fe" },
+                                ]}
+                                onPress={() => setSelectedRegion(regiontext)}>
+                                <Text key={index}>{regiontext}</Text>
+                            </Pressable>
                         ))}
                     </Box>
                 </Box>
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>시세</Text>
                     <Box style={styles.priceBox}>
-                        <TextInput style={styles.input} placeholder="최저가" />
-                        <TextInput style={styles.input} placeholder="최고가" />
+                        <TextInput style={styles.input} keyboardType="number-pad" placeholder="최저가" />
+                        <TextInput style={styles.input} keyboardType="number-pad" placeholder="최고가" />
                     </Box>
                 </Box>
-
             </Box>
             <Box bg="primary.200" style={styles.accept}>
                 <Pressable>
@@ -66,8 +80,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     nw: {
-        width:"100%",
-        height:"5%"
+        width: "100%",
+        height: "5%"
     },
     header: {
         width: "100%",
@@ -93,8 +107,8 @@ const styles = StyleSheet.create({
     reset: {
         width: "20%",
         display: "flex",
-        textAlign: "center",
         justifyContent: "center",
+        alignItems:"center",
         borderRadius: 10,
     },
     filterContainer: {
@@ -117,8 +131,10 @@ const styles = StyleSheet.create({
         height: "200%",
         margin: 2,
         borderRadius: 10,
-        textAlign: "center",
         padding: "2%",
+        backgroundColor:"#FFFFA6",
+        justifyContent:"center",
+        alignItems:"center"
     },
     selectBox: {
         marginTop: "1%",
@@ -153,8 +169,8 @@ const styles = StyleSheet.create({
     accept: {
         width: "100%",
         height: "10%",
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     }
 });

@@ -17,28 +17,18 @@ export default function Page() {
           </Box>
         </Box>
         <Box style={styles.info}>
-          {/* <FlatList
-            data={data}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <Box style={styles.infoItem}>
-                <Text>{item.id}</Text>
-                <Text>{item.전용면적}</Text>
-                <Text>{item.거래금액}</Text>
-              </Box>
-            )}
-          /> */}
+          
         </Box>
         <Box style={underbar.bar}>
           <Link href="/filter/search" style={underbar.round}>
-            <Text >검색</Text>
+            <Text>검색</Text>
           </Link>
           <Link href="/filter/option" style={underbar.round}>
-            <Text >설정</Text>
+            <Text>설정</Text>
           </Link>
           <Text style={[underbar.round, underbar.main]}>시세</Text>
           <Link href="/filter/map" style={underbar.round}>
-            <Text >지도</Text>
+            <Text>지도</Text>
           </Link>
           <Link href="/filter/home" style={underbar.round}>
             <Text>홈</Text>
