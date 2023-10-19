@@ -11,6 +11,8 @@ export default function FilterPage() {
     // 각 필터 항목에 대한 상태 변수 추가
     const [selectedArea, setSelectedArea] = useState("");
     const [selectedRegion, setSelectedRegion] = useState("");
+    const [selectedAreaValue, setSelectedAreaValue] = useState(""); // 새로운 state 변수
+    const [selectedRegionValue, setSelectedRegionValue] = useState(""); // 새로운 state 변수
 
     return (
         <Box bg="brand.50" style={styles.container}>
@@ -33,29 +35,42 @@ export default function FilterPage() {
                     <Text style={styles.filterTitle}>면적</Text>
                     <Box style={styles.selectBox}>
                         {area.map((areatext, index) => (
-                            <Pressable key={index}
+                            <Pressable
+                                key={index}
                                 style={[
                                     styles.select,
                                     selectedArea === areatext && { backgroundColor: "#c7d2fe" },
-                                ]} onPress={() => setSelectedArea(areatext)}>
+                                ]}
+                                onPress={() => {
+                                    setSelectedArea(areatext); // "selectedArea" state 업데이트
+                                    setSelectedAreaValue(areatext); // "selectedAreaValue" state 업데이트
+                                }}
+                            >
                                 <Text key={index}>{areatext}</Text>
                             </Pressable>
                         ))}
+
                     </Box>
                 </Box>
                 <Box bg="muted.50" style={styles.filterBlock}>
                     <Text style={styles.filterTitle}>지역</Text>
                     <Box style={styles.selectBox}>
                         {region.map((regiontext, index) => (
-                            <Pressable key={index}
+                            <Pressable
+                                key={index}
                                 style={[
                                     styles.select,
                                     selectedRegion === regiontext && { backgroundColor: "#c7d2fe" },
                                 ]}
-                                onPress={() => setSelectedRegion(regiontext)}>
+                                onPress={() => {
+                                    setSelectedRegion(regiontext); // "selectedRegion" state 업데이트
+                                    setSelectedRegionValue(regiontext); // "selectedRegionValue" state 업데이트
+                                }}
+                            >
                                 <Text key={index}>{regiontext}</Text>
                             </Pressable>
                         ))}
+
                     </Box>
                 </Box>
                 <Box bg="muted.50" style={styles.filterBlock}>
@@ -64,6 +79,11 @@ export default function FilterPage() {
                         <TextInput style={styles.input} keyboardType="number-pad" placeholder="최저가" />
                         <TextInput style={styles.input} keyboardType="number-pad" placeholder="최고가" />
                     </Box>
+                </Box>
+                <Box>
+                    <Text>설정된 필터</Text>
+                    <Text>{selectedAreaValue}</Text>
+                    <Text>{selectedRegionValue}</Text>
                 </Box>
             </Box>
             <Box bg="primary.200" style={styles.accept}>
@@ -108,7 +128,7 @@ const styles = StyleSheet.create({
         width: "20%",
         display: "flex",
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         borderRadius: 10,
     },
     filterContainer: {
@@ -132,9 +152,9 @@ const styles = StyleSheet.create({
         margin: 2,
         borderRadius: 10,
         padding: "2%",
-        backgroundColor:"#FFFFA6",
-        justifyContent:"center",
-        alignItems:"center"
+        backgroundColor: "#FFFFA6",
+        justifyContent: "center",
+        alignItems: "center"
     },
     selectBox: {
         marginTop: "1%",

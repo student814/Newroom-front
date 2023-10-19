@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { StyleSheet, PanResponder, Animated } from "react-native";
 import { Link } from 'expo-router';
 import { Box, Text } from "native-base";
+import { WebView } from 'react-native-webview';
 
 export default function Page() {
     const site = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
@@ -30,27 +31,39 @@ export default function Page() {
     return (
         <Box bg="brand.50" style={styles.container}>
             <Box style={styles.nw}></Box>
-            <Text style={styles.map}>지도 API</Text>
+            <Box style={styles.map}>
+                <WebView source={{ uri: 'https://map-server-mu.vercel.app/' }} />
+            </Box>
             <Box>
-                <Text style={styles.infocase}>정보</Text>
+                <Text style={styles.infocase}></Text>
             </Box>
             <Box>
 
             </Box>
             <Box style={underbar.bar}>
-                <Link style={underbar.round} href="/filter/marketcondition">
-                    <Text>시세</Text>
-                </Link>
-                <Link style={underbar.round} href="/filter/map">
-                    <Text>지도</Text>
-                </Link>
-                <Text style={[underbar.round, underbar.main]}>홈</Text>
-                <Link style={underbar.round} href="/filter/search">
-                    <Text>검색</Text>
-                </Link>
-                <Link style={underbar.round} href="/filter/option">
-                    <Text>설정</Text>
-                </Link>
+                <Box style={underbar.round}>
+                    <Link href="/filter/marketcondition">
+                        <Text>시세</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/map">
+                        <Text>지도</Text>
+                    </Link>
+                </Box>
+                <Box style={[underbar.round, underbar.main]}>
+                    <Text>홈</Text>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/search">
+                        <Text>검색</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/option">
+                        <Text>설정</Text>
+                    </Link>
+                </Box>
             </Box>
             <Animated.View
                 style={[{ transform: getTranslateTransform() }, styles.filter]}
@@ -72,8 +85,8 @@ const styles = StyleSheet.create({
         overflow: "hidden",
     },
     nw: {
-        width:"100%",
-        height:"5%"
+        width: "100%",
+        height: "5%"
     },
     map: {
         height: "55%",
@@ -99,6 +112,7 @@ const styles = StyleSheet.create({
         color: "gray",
     },
 });
+
 const underbar = StyleSheet.create({
     bar: {
         display: "flex",
@@ -113,12 +127,11 @@ const underbar = StyleSheet.create({
         borderRadius: 20,
         width: "20%",
         height: "100%",
-        flexDirection: "column",
-        textAlign: "center",
-        padding: "6%",
+        alignItems: "center",
+        justifyContent: "center",
     },
     main: {
         backgroundColor: "#9F9FFF",
         color: "black",
     }
-  })
+})

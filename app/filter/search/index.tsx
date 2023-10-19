@@ -1,6 +1,7 @@
 import { StyleSheet, TextInput } from "react-native";
 import { Text, Box } from "native-base";
 import { Link } from 'expo-router'
+import { WebView } from 'react-native-webview';
 
 export default function Page() {
     return (
@@ -19,9 +20,7 @@ export default function Page() {
                 </Box>
             </Box>
             <Box style={map.map}>
-                <Text>
-                    지도 api
-                </Text>
+                <WebView source={{ uri: 'https://map-server-mu.vercel.app/' }} />
             </Box>
             <Box style={info.infocase}>
                 <Box style={info.area}>
@@ -29,37 +28,45 @@ export default function Page() {
                 </Box>
                 <Box style={info.detail}>
                     <Link href="/filter/marketcondition">
-                        <Text style={info.price}>시세</Text>
+                        <Text>시세</Text>
                     </Link>
                     <Link href="/filter/floorplan">
-                        <Text style={info.floor}>평면도</Text>
+                        <Text>평면도</Text>
                     </Link>
                 </Box>
             </Box>
             <Box style={underbar.bar}>
-                <Link style={underbar.round} href="/filter/map">
-                    <Text>지도</Text>
-                </Link>
-                <Link style={underbar.round} href="/filter/home">
-                    <Text>홈</Text>
-                </Link>
-                <Link style={[underbar.round, underbar.main]} href="/filter/search">
+                <Box style={underbar.round}>
+                    <Link href="/filter/map">
+                        <Text>지도</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/home">
+                        <Text>홈</Text>
+                    </Link>
+                </Box>
+                <Box style={[underbar.round, underbar.main]}>
                     <Text>검색</Text>
-                </Link>
-                <Link style={underbar.round} href="/filter/option">
-                    <Text>설정</Text>
-                </Link>
-                <Link style={underbar.round} href="/filter/marketcondition">
-                    <Text>시세</Text>
-                </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/option">
+                        <Text>설정</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/marketcondition">
+                        <Text>시세</Text>
+                    </Link>
+                </Box>
             </Box>
         </Box>
     );
 }
 const header = StyleSheet.create({
     nw: {
-        width:"100%",
-        height:"5%"
+        width: "100%",
+        height: "5%"
     },
     header: {
         display: "flex",
@@ -102,7 +109,7 @@ const map = StyleSheet.create({
     },
     map: {
         width: "100%",
-        height: "40%",
+        height: "60%",
     },
 });
 const info = StyleSheet.create({
@@ -110,7 +117,7 @@ const info = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         width: "100%",
-        height: "40%",
+        height: "20%",
     },
     area: {
         width: "30%",
@@ -122,12 +129,6 @@ const info = StyleSheet.create({
         flexDirection: "column",
         width: "70%",
         height: "45%",
-    },
-    price: {
-
-    },
-    floor: {
-
     },
 })
 
@@ -145,9 +146,8 @@ const underbar = StyleSheet.create({
         borderRadius: 20,
         width: "20%",
         height: "100%",
-        flexDirection: "column",
-        textAlign: "center",
-        padding: "6%",
+        alignItems: "center",
+        justifyContent: "center",
     },
     main: {
         backgroundColor: "#9F9FFF",

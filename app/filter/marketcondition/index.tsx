@@ -6,59 +6,69 @@ export default function Page() {
   return (
     <Box bg="brand.50" flex={1}>
       <Box style={styles.nw}></Box>
-        <Box style={styles.header}>
-          <Box style={styles.count}>
-            <Text>찾아진 매물의 개수:</Text>
-          </Box>
-          <Box style={styles.filter}>
-            <Link href="/filter">
-              <Text style={styles.filterText}>필터</Text>
-            </Link>
-          </Box>
+      <Box style={styles.header}>
+        <Box style={styles.count}>
+          <Text>찾아진 매물의 개수:</Text>
         </Box>
-        <Box style={styles.info}>
-          
+        <Box style={styles.filter}>
+          <Link href="/filter">
+            <Text style={styles.filterText}>필터</Text>
+          </Link>
         </Box>
-        <Box style={underbar.bar}>
-          <Link href="/filter/search" style={underbar.round}>
+      </Box>
+      <Box style={styles.info}>
+
+      </Box>
+      <Box style={underbar.bar}>
+        <Box style={underbar.round}>
+          <Link href="/filter/search">
             <Text>검색</Text>
           </Link>
-          <Link href="/filter/option" style={underbar.round}>
+        </Box>
+        <Box style={underbar.round}>
+          <Link href="/filter/option">
             <Text>설정</Text>
           </Link>
-          <Text style={[underbar.round, underbar.main]}>시세</Text>
-          <Link href="/filter/map" style={underbar.round}>
+        </Box>
+        <Box style={[underbar.round, underbar.main]}>
+          <Text>시세</Text>
+        </Box>
+        <Box style={underbar.round}>
+          <Link href="/filter/map">
             <Text>지도</Text>
           </Link>
-          <Link href="/filter/home" style={underbar.round}>
+        </Box>
+        <Box style={underbar.round}>
+          <Link href="/filter/home">
             <Text>홈</Text>
           </Link>
         </Box>
+      </Box>
     </Box>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-      width:"100%",
-      height:"100%"
+    width: "100%",
+    height: "100%"
   },
   nw: {
-    width:"100%",
-    height:"5%"
+    width: "100%",
+    height: "5%"
   },
   header: {
     display: 'flex',
     flexDirection: 'column',
-    height:"10%"
+    height: "10%"
   },
   count: {
-    width:"100%",
+    width: "100%",
     height: "50%",
-    textAlign:"center",
+    textAlign: "center",
   },
   filter: {
-    width:"15%",
+    width: "15%",
     height: "50%",
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,8 +79,8 @@ const styles = StyleSheet.create({
     color: "white"
   },
   info: {
-    width:"100%",
-    height:"75%",
+    width: "100%",
+    height: "75%",
   },
 });
 
@@ -88,9 +98,8 @@ const underbar = StyleSheet.create({
     borderRadius: 20,
     width: "20%",
     height: "100%",
-    flexDirection: "column",
-    textAlign: "center",
-    padding: "6%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   main: {
     backgroundColor: "#9F9FFF",

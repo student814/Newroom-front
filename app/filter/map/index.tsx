@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, TextInput } from "react-native";
 import { Text, Box } from "native-base";
 import { Link } from 'expo-router';
+import { WebView } from 'react-native-webview';
 
 export default function Page() {
     const [searchValue, setSearchValue] = useState(""); // 검색 입력값을 상태로 관리
@@ -33,26 +34,31 @@ export default function Page() {
                     />
                 </Box>
             </Box>
-            <Text style={map.map}>
-            <Text>
-                {/* 지도 */}
-            </Text>
-            </Text>
+            <WebView source={{ uri: 'https://map-server-mu.vercel.app/' }} />
             <Box style={underbar.bar}>
-                <Link href="/filter/option" style={underbar.round}>
-                    <Text>설정</Text>
-                </Link>
-                <Link href="/filter/marketcondition" style={underbar.round}>
-                    <Text>시세</Text>
-                </Link>
-                <Text style={[underbar.round, underbar.main]}>지도</Text>
-
-                <Link href="/filter/home" style={underbar.round}>
-                    <Text>홈</Text>
-                </Link>
-                <Link href="/filter/search" style={underbar.round}>
-                    <Text>검색</Text>
-                </Link>
+                <Box style={underbar.round}>
+                    <Link href="/filter/option">
+                        <Text>설정</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/marketcondition">
+                        <Text>시세</Text>
+                    </Link>
+                </Box>
+                <Box style={[underbar.round, underbar.main]}>
+                    <Text>지도</Text>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/home">
+                        <Text>홈</Text>
+                    </Link>
+                </Box>
+                <Box style={underbar.round}>
+                    <Link href="/filter/search">
+                        <Text>검색</Text>
+                    </Link>
+                </Box>
             </Box>
 
         </Box>
@@ -122,9 +128,8 @@ const underbar = StyleSheet.create({
         borderRadius: 20,
         width: "20%",
         height: "100%",
-        flexDirection: "column",
-        textAlign: "center",
-        padding: "6%",
+        alignItems: "center",
+        justifyContent: "center",
     },
     main: {
         backgroundColor: "#9F9FFF",
