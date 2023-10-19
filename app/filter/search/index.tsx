@@ -4,6 +4,9 @@ import { Link } from 'expo-router'
 import { WebView } from 'react-native-webview';
 
 export default function Page() {
+    const AreaSize = '';
+    const MarketCD = '';
+    const FloorImg = ''; 
     return (
         <Box bg="brand.50" style={map.container}>
             <Box style={header.nw}></Box>
@@ -24,15 +27,11 @@ export default function Page() {
             </Box>
             <Box style={info.infocase}>
                 <Box style={info.area}>
-                    <Text>면적</Text>
+                    <Text>{AreaSize}</Text>
                 </Box>
                 <Box style={info.detail}>
-                    <Link href="/filter/marketcondition">
-                        <Text>시세</Text>
-                    </Link>
-                    <Link href="/filter/floorplan">
-                        <Text>평면도</Text>
-                    </Link>
+                    <Text>{MarketCD}</Text>
+                    <Text>{FloorImg}</Text>
                 </Box>
             </Box>
             <Box style={underbar.bar}>

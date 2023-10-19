@@ -5,7 +5,7 @@ import { Text, Box } from "native-base";
 
 export default function FilterPage() {
     const router = useRouter();
-    const area = ['10평 이하', '10평대', '20평대', '30평대', '40평대', '50평대', '60평대', '70평 이상'];
+    const area = ['10평대', '20평대', '30평대', '40평대', '50평대', '60평대', '70평대', '80평대'];
     const region = ['수도권', '강원도', '충청남도', '충청북도', '전라북도', '전라남도', '경상북도', '경상남도']
 
     // 각 필터 항목에 대한 상태 변수 추가
@@ -14,6 +14,13 @@ export default function FilterPage() {
     const [selectedAreaValue, setSelectedAreaValue] = useState(""); // 새로운 state 변수
     const [selectedRegionValue, setSelectedRegionValue] = useState(""); // 새로운 state 변수
 
+    const getFirstTwoCharacters = (text) => text.slice(0, 2);
+
+    const handleAreaSelection = (areatext) => {
+        setSelectedArea(areatext);
+        const firstTwoCharacters = getFirstTwoCharacters(areatext);
+        setSelectedAreaValue(firstTwoCharacters);
+    }
     return (
         <Box bg="brand.50" style={styles.container}>
             <Box style={styles.nw}></Box>
@@ -41,10 +48,7 @@ export default function FilterPage() {
                                     styles.select,
                                     selectedArea === areatext && { backgroundColor: "#c7d2fe" },
                                 ]}
-                                onPress={() => {
-                                    setSelectedArea(areatext); // "selectedArea" state 업데이트
-                                    setSelectedAreaValue(areatext); // "selectedAreaValue" state 업데이트
-                                }}
+                                onPress={() => handleAreaSelection(areatext)}
                             >
                                 <Text key={index}>{areatext}</Text>
                             </Pressable>
