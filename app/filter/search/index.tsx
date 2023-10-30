@@ -27,11 +27,11 @@ export default function Page() {
             </Box>
             <Box style={info.infocase}>
                 <Box style={info.area}>
-                    <Text>{AreaSize}</Text>
+                    <Text>면적{AreaSize}</Text>
                 </Box>
                 <Box style={info.detail}>
-                    <Text>{MarketCD}</Text>
-                    <Text>{FloorImg}</Text>
+                    <Text>시세{MarketCD}</Text>
+                    <Text>사진{FloorImg}</Text>
                 </Box>
             </Box>
             <Box style={underbar.bar}>

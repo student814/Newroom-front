@@ -8,7 +8,7 @@ export default function Page() {
       <Box style={styles.nw}></Box>
       <Box style={styles.header}>
         <Box style={styles.count}>
-          <Text>찾아진 매물의 개수:</Text>
+          <Text>찾아진 매물의 개수:0개</Text>
         </Box>
         <Box style={styles.filter}>
           <Link href="/filter">

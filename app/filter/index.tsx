@@ -13,9 +13,9 @@ export default function FilterPage() {
     const [selectedRegion, setSelectedRegion] = useState("");
     const [selectedAreaValue, setSelectedAreaValue] = useState(""); // 새로운 state 변수
     const [selectedRegionValue, setSelectedRegionValue] = useState(""); // 새로운 state 변수
-
     const getFirstTwoCharacters = (text) => text.slice(0, 2);
 
+    // 면적을 선택할 때 앞 두 글자를 가져와서 selectedAreaValue에 저장
     const handleAreaSelection = (areatext) => {
         setSelectedArea(areatext);
         const firstTwoCharacters = getFirstTwoCharacters(areatext);
